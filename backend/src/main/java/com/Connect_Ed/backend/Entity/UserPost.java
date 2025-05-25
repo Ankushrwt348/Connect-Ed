@@ -22,8 +22,8 @@ public class UserPost {
 
     private String email;
 
-
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Post> posts;
 }
 

@@ -2,6 +2,7 @@ package com.Connect_Ed.backend.Entity;
 
 import com.Connect_Ed.backend.Entity.DTO.Role;
 import com.Connect_Ed.backend.Entity.DTO.Status;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING_APPROVAL;
 
+    @JsonProperty("profileImage")
     private String profilePic;  // URL or path to profile image
 
     // connections where this user is connected with others

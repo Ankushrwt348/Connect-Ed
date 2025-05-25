@@ -24,8 +24,9 @@ public class Post {
     private LocalDateTime createdAt;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private UserPost user;
 
 

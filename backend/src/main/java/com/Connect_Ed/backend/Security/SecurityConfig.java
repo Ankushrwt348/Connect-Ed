@@ -1,5 +1,7 @@
 package com.Connect_Ed.backend.Security;
 
+import com.Connect_Ed.backend.Services.CustomOAuth2UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -22,6 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
@@ -33,8 +36,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth -> oauth
-                        // Remove this line if you don't have a custom user service:
-                        // .userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
+
                         .defaultSuccessUrl("http://localhost:3000/oauth2/success", true)
                         .successHandler((request, response, authentication) ->
                                 response.sendRedirect("http://localhost:3000/oauth2/success")

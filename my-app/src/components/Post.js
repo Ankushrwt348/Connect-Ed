@@ -9,6 +9,9 @@ const Post = ({ post }) => {
   const [commentsLoading, setCommentsLoading] = useState(false);
   const [likeLoading, setLikeLoading] = useState(false);
 
+  // New state for like count
+  const [likeCount, setLikeCount] = useState(0);
+
   useEffect(() => {
     if (showComments) {
       setCommentsLoading(true);
@@ -30,6 +33,18 @@ const Post = ({ post }) => {
         .finally(() => setCommentsLoading(false));
     }
   }, [showComments, post.id]);
+
+  // New effect: fetch like count when component mounts
+  useEffect(() => {
+    fetch(`http://localhost:8081/api/likes/count/${post.id}`, {
+      credentials: 'include',
+    })
+      .then(res => res.json())
+      .then(count => setLikeCount(count))
+      .catch(err => {
+        console.error('Failed to fetch like count:', err);
+      });
+  }, [post.id]);
 
   const handleToggleComments = () => {
     setShowComments(prev => !prev);
@@ -58,17 +73,22 @@ const Post = ({ post }) => {
       });
   };
 
+  // Updated toggleLike function to call correct backend and update likeCount
   const toggleLike = () => {
     if (likeLoading) return; // prevent multiple clicks
     setLikeLoading(true);
 
-    fetch(`http://localhost:8081/api/posts/${post.id}/like`, {
-      method: liked ? 'DELETE' : 'POST',
+    fetch(`http://localhost:8081/api/likes/${post.id}`, {
+      method: 'POST',
       credentials: 'include',
     })
       .then(res => {
         if (!res.ok) throw new Error('Failed to update like');
-        setLiked(!liked);
+        return res.json();
+      })
+      .then(data => {
+        setLiked(data.liked);
+        setLikeCount(prev => data.liked ? prev + 1 : prev - 1);
       })
       .catch(err => {
         console.error(err);
@@ -76,12 +96,13 @@ const Post = ({ post }) => {
       })
       .finally(() => setLikeLoading(false));
   };
+
   console.log('Post profilePic:', post.profilePic);
   return (
     <div className={styles.post}>
       <div className={styles.postHeader}>
         <img src={post.profilePic} alt={post.user} className={styles.profilePic} />
-       
+
         <div>
           <h3>{post.user}</h3>
           <p>{post.role}</p>
@@ -93,7 +114,6 @@ const Post = ({ post }) => {
 
       {post.postImage && (
         <img src={post.profilePic} alt={post.user} className={styles.profilePic} />
-
       )}
 
       <div className={styles.actions}>
@@ -106,6 +126,9 @@ const Post = ({ post }) => {
           {liked ? '❤️' : '🤍'}
         </button>
 
+        {/* NEW: Show like count here */}
+        <span>{likeCount} {likeCount === 1 ? 'like' : 'likes'}</span>
+
         <button onClick={handleToggleComments}>
           {showComments ? 'Hide Comments' : 'Comment'}
         </button>
@@ -114,51 +137,50 @@ const Post = ({ post }) => {
       </div>
 
       {showComments && (
-  <div className={styles.commentsSection}>
-    <div className={styles.addComment}>
-      <input
-        type="text"
-        placeholder="Write a comment..."
-        value={newComment}
-        onChange={e => setNewComment(e.target.value)}
-        onKeyDown={e => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            handleAddComment();
-          }
-        }}
-        disabled={commentsLoading}
-      />
-      <button onClick={handleAddComment} disabled={commentsLoading}>
-        Comment
-      </button>
-    </div>
+        <div className={styles.commentsSection}>
+          <div className={styles.addComment}>
+            <input
+              type="text"
+              placeholder="Write a comment..."
+              value={newComment}
+              onChange={e => setNewComment(e.target.value)}
+              onKeyDown={e => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  handleAddComment();
+                }
+              }}
+              disabled={commentsLoading}
+            />
+            <button onClick={handleAddComment} disabled={commentsLoading}>
+              Comment
+            </button>
+          </div>
 
-    <div className={styles.commentsList}>
-      {commentsLoading ? (
-        <p>Loading comments...</p>
-      ) : comments.length === 0 ? (
-        <p>No comments yet.</p>
-      ) : (
-        comments.map(comment => {
-          console.log('Rendering comment:', comment); // Debug output
+          <div className={styles.commentsList}>
+            {commentsLoading ? (
+              <p>Loading comments...</p>
+            ) : comments.length === 0 ? (
+              <p>No comments yet.</p>
+            ) : (
+              comments.map(comment => {
+                console.log('Rendering comment:', comment);
 
-          return (
-            <div key={comment.id} className={styles.comment}>
-              <img
-                src={comment.user?.profileImage || '/default-avatar.jpg'}
-                alt={comment.user?.name || 'Anonymous'}
-                className={styles.commentProfilePic}
-              />
-              <strong>{comment.user?.name || 'Anonymous'}:</strong> {comment.text /* use text here */}
-            </div>
-          );
-        })
+                return (
+                  <div key={comment.id} className={styles.comment}>
+                    <img
+                      src={comment.user?.profileImage || '/default-avatar.jpg'}
+                      alt={comment.user?.name || 'Anonymous'}
+                      className={styles.commentProfilePic}
+                    />
+                    <strong>{comment.user?.name || 'Anonymous'}:</strong> {comment.text}
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
       )}
-    </div>
-  </div>
-)}
-
     </div>
   );
 };

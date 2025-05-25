@@ -5,16 +5,11 @@ import com.Connect_Ed.backend.Entity.DTO.UserDto;
 import com.Connect_Ed.backend.Entity.User;
 import com.Connect_Ed.backend.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,6 +17,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+
 
     public List<User> getConnectedUsers(Long userId) {
         User user = userRepository.findById(userId)
@@ -65,16 +62,8 @@ public class UserService {
         userRepository.save(user);
         userRepository.save(connectUser);
     }
-    public void updateUserProfile(Long userId, UserDto userDto) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
 
-        user.setFullName(userDto.getFullName());
-        user.setProfilePic(userDto.getProfilePic());
-        // Add other profile fields as needed
-        user.setStatus(Status.PENDING_APPROVAL); // Set status to pending for admin approval
-
-        userRepository.save(user);
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
-
 }

@@ -2,23 +2,28 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/Meetups.module.css';
 
-function Meetups() {
+function Meetups({ user }) {
   const [meetups, setMeetups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8081/api/meetups')
+    if (!user) {
+      setError('Please log in to view meetups.');
+      setLoading(false);
+      return;
+    }
+
+    axios.get('http://localhost:8081/api/meetups', { withCredentials: true })
       .then(response => {
         setMeetups(response.data);
         setLoading(false);
       })
-      .catch(error => {
-        console.error('Error fetching meetups:', error);
+      .catch(() => {
         setError('Failed to load meetups.');
         setLoading(false);
       });
-  }, []);
+  }, [user]);
 
   const handleJoin = (title) => {
     alert(`You clicked Join for "${title}". Functionality coming soon!`);
@@ -38,11 +43,15 @@ function Meetups() {
         {meetups.map((meetup) => (
           <article key={meetup.id} className={styles.meetupCard}>
             <div className={styles.cardHeader}>
-              <span className={`${styles.category} ${styles[meetup.category?.toLowerCase() || 'default']}`}>
-                {meetup.category || 'General'}
+              <span className={`${styles.category} ${styles[meetup.category?.toLowerCase().replace('/', '') || 'default']}`}>
+                {meetup.category || 'Technology'}
               </span>
-              <time className={styles.date} dateTime={meetup.date}>
-                {meetup.date || 'Date TBA'}
+              <time className={styles.date}>
+                {new Date(meetup.date).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric'
+                })}
               </time>
             </div>
 
@@ -50,24 +59,23 @@ function Meetups() {
             <p className={styles.description}>{meetup.description}</p>
 
             <div className={styles.organizer}>
-              <img 
-                src={meetup.organizer?.avatar || '/default-avatar.png'} 
-                alt={meetup.organizer?.name || 'Organizer'} 
+              <img
+                src={meetup.createdByProfilePic || '/default-avatar.png'}
+                alt={meetup.createdByName}
                 className={styles.organizerAvatar}
               />
               <div className={styles.organizerInfo}>
-                <h3>{meetup.organizer?.name || 'Unknown Organizer'}</h3>
-                <p>{meetup.organizer?.title || ''}</p>
+                <h3>{meetup.createdByName}</h3>
+                <p>{meetup.createdByTitle || 'Event Organizer'}</p>
               </div>
             </div>
 
             <div className={styles.location}>
-              <i className="location-icon" aria-hidden="true"></i>
-              <span>{meetup.location || 'Location TBA'}</span>
+              📍 {meetup.location}
             </div>
 
-            <button 
-              className={styles.joinButton} 
+            <button
+              className={styles.joinButton}
               onClick={() => handleJoin(meetup.title)}
             >
               Join Event

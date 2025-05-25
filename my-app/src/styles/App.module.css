@@ -1,132 +1,146 @@
 .app {
-  background-color: #f3e5f5;  /* Light elegant purple */
   min-height: 100vh;
+  background-color: #ffffff;
 }
-.logoutButton {
-  background-color: transparent;
-  border: none;
-  color: #f44336;
-  cursor: pointer;
-  font-weight: bold;
-  margin-left: 1rem;
-}
-.logoutButton:hover {
-  text-decoration: underline;
-}
-.logoutLoadingContainer {
-  color: #555;
-  font-weight: 500;
-  padding: 8px 12px;
-}
-
-
-.active {
-  font-weight: 700;
-  color: #1a73e8; /* example active color */
-  border-bottom: 2px solid #1a73e8;
-}
-
 
 .navbar {
   background-color: white;
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
+  text-decoration: none;
+  gap: 0.5rem;
 }
 
 .logo {
-  height: 30px;  /* Reduced from 40px to 30px */
+  height: 32px;
+  width: auto;
 }
 
 .navLinks {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
+  align-items: center;
+  margin-left: 3rem;
 }
 
 .navLinks a {
   text-decoration: none;
-  color: #007bff;  /* Changed back to blue */
+  color: #4b5563;
   font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
   transition: color 0.2s;
 }
 
 .navLinks a:hover {
-  color: #0056b3;  /* Changed back to original blue hover */
+  color: #6b21a8;
+}
+
+.active {
+  color: #6b21a8 !important;
+  font-weight: 600;
+  position: relative;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #6b21a8;
+  border-radius: 2px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .signInButton {
-  padding: 0.5rem 1.5rem;
-  background-color: #007bff;  /* Changed back to blue */
+  padding: 0.5rem 1.25rem;
+  background-color: #000;
   color: white;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
 .signInButton:hover {
-  background-color: #0056b3;  /* Changed back to original blue hover */
-}
-
-.mainContent {
-  padding: 2rem;
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
 }
 
 .signUpButton {
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.25rem;
   background-color: transparent;
-  color: #007bff;
-  border: 1px solid #007bff;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
+  color: #000;
+  border: 1.5px solid #000;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
   text-decoration: none;
+  transition: all 0.2s;
 }
 
 .signUpButton:hover {
-  background-color: #007bff;
+  background-color: #000;
   color: white;
 }
-
-.userName {
-  color: #007bff;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-}
-
 
 .userSection {
   display: flex;
   align-items: center;
-  gap: 15px;
-}
-
-.userProfile {
-  display: flex;
-  align-items: center;
+  gap: 1rem;
 }
 
 .profilePic {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
 
 .profilePic:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-.welcomeText {
-  color: #333;
+.logoutButton {
+  background-color: transparent;
+  border: none;
+  color: #dc2626;
+  font-size: 0.9rem;
   font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s;
+}
+
+.logoutButton:hover {
+  color: #b91c1c;
+}
+
+.mainContent {
+  padding: 1rem;
+  margin: 0;
+  width: 100%;
 }

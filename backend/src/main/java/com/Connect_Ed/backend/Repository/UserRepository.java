@@ -15,6 +15,7 @@ import java.util.Set;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByEmail(String email);
+
     Optional<User> findByEmail(String email);
 
     @Query("SELECT u FROM User u WHERE u.id IN :ids")

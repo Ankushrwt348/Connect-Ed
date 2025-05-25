@@ -4,6 +4,7 @@ import com.Connect_Ed.backend.Entity.Like;
 import com.Connect_Ed.backend.Entity.Post;
 import com.Connect_Ed.backend.Entity.UserPost;
 import com.Connect_Ed.backend.Repository.LikeRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,7 +17,11 @@ public class LikeService {
     public LikeService(LikeRepository likeRepository) {
         this.likeRepository = likeRepository;
     }
+    public long getLikeCount(Post post) {
+        return likeRepository.countByPostAndLikedTrue(post);
+    }
 
+    @Transactional
     public Like toggleLike(UserPost user, Post post) {
         Optional<Like> existingLike = likeRepository.findByUserAndPost(user, post);
         if (existingLike.isPresent()) {

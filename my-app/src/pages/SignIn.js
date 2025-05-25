@@ -17,17 +17,12 @@ function SignIn({ setUser }) {
         credentials: 'include',
         body: JSON.stringify(formData),
       });
-
+  
       if (response.ok) {
-        const userInfoRes = await fetch('http://localhost:8081/api/user-info', {
-          credentials: 'include',
-        });
-
-        if (!userInfoRes.ok) throw new Error('Failed to fetch user info');
-
-        const user = await userInfoRes.json();
+        // Use user info from signin response directly
+        const user = await response.json();
         setUser(user);
-
+  
         if (user.email === 'rawatankush348@gmail.com') {
           navigate('/admin');
         } else {
@@ -44,7 +39,7 @@ function SignIn({ setUser }) {
       setLoading(false);
     }
   };
-
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

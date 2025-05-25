@@ -2,96 +2,157 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 64px);
-  padding: 2rem;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 1rem;
 }
 
 .signInCard {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.5rem;
 }
 
 .signInCard h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
   margin-bottom: 0.5rem;
-  color: #333;
+  text-align: center;
 }
 
 .signInCard p {
   color: #666;
   margin-bottom: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
 }
 
 .inputGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .inputGroup label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #4a4a4a;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .inputGroup input {
   width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: 0.875rem 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
 .inputGroup input:focus {
-  border-color: #007bff;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
   outline: none;
 }
 
 .signInButton {
   width: 100%;
-  padding: 0.8rem;
-  background-color: #007bff;
+  padding: 0.875rem;
+  background-color: #000;
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
 }
 
 .signInButton:hover {
-  background-color: #0056b3;
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
+}
+
+.signInButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.875rem;
+  background-color: white;
+  color: #1a1a1a;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1.5rem;
+}
+
+.googleButton:hover {
+  background-color: #f8f9fa;
+  border-color: #d0d0d0;
+}
+
+.googleButton img {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+
+.divider::before {
+  margin-right: 1rem;
+}
+
+.divider::after {
+  margin-left: 1rem;
 }
 
 .signUpText {
   text-align: center;
   margin-top: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .signUpText a {
-  color: #007bff;
+  color: #6366f1;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .signUpText a:hover {
   text-decoration: underline;
-}
-.googleButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  color: #444;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.divider {
-  text-align: center;
-  margin: 20px 0;
-  color: #999;
 }

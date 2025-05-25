@@ -6,11 +6,13 @@ function LogoutButton({ setUser }) {
     })
       .then(() => {
         setUser(null); // clear user state
-        window.location.href = "/login"; // redirect to login
+         // redirect to login
       })
       .catch((err) => {
         console.error("Logout failed:", err);
       });
+      window.location.reload()
+        window.location.href = "/signUp";
   };
 
   return (

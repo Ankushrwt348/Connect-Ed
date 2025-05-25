@@ -1,6 +1,5 @@
 package com.Connect_Ed.backend.Entity;
 
-import com.Connect_Ed.backend.Entity.DTO.Organizer;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,6 +18,9 @@ public class Meetup {
     private String description;
     private String location;
 
-    @Embedded
-    private Organizer organizer;
+
+    private String createdByName;
+    private String createdByEmail;
+    private String createdByProfilePic;
+
 }

@@ -18,7 +18,7 @@ function App() {
   const [loadingUser, setLoadingUser] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/user-info', {  // <-- fixed URL here
+    fetch('http://localhost:8081/api/user-info', {
       credentials: 'include',
     })
       .then(res => {
@@ -82,7 +82,7 @@ function App() {
                 <div className={styles.userProfile}>
                   <NavLink to="/profile">
                     <img
-                      src={user.picture || user.imageUrl || "/default-avatar.png"}
+                      src={user.profilImage || user.imageUrl || "/default-avatar.png"}
                       alt="Profile"
                       className={styles.profilePic}
                     />
@@ -110,7 +110,7 @@ function App() {
 
             <Route path="/meetups" element={
               <PrivateRoute user={user}>
-                <Meetups />
+                <Meetups user={user} />
               </PrivateRoute>
             } />
 

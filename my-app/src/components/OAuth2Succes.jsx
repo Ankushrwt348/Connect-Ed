@@ -9,13 +9,13 @@ const OAuth2Success = () => {
   useEffect(() => {
     const checkApprovalStatus = async () => {
       try {
-        const res = await axios.get("/api/user/me"); // Get current user
+        const res = await axios.get("/api/user/me"); 
         const user = res.data;
 
         if (user.status === "PENDING_APPROVAL") {
           navigate("/profile");
         } else {
-          navigate("/home"); // or wherever approved users go
+          navigate("/");
         }
       } catch (error) {
         console.error("OAuth2 success error:", error);

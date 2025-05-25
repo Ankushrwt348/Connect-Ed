@@ -1,0 +1,207 @@
+.post {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s ease;
+  }
+  .profilePic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* Add this: */
+    display: block;
+  }
+  .post:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .postHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .profilePic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 12px;
+    display: block;
+  }
+  
+  .postHeader div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .postHeader h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .postHeader p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .postHeader span {
+    font-size: 12px;
+    color: #aaa;
+  }
+  
+  .post p {
+    font-size: 15px;
+    margin: 12px 0;
+    line-height: 1.5;
+  }
+  
+  .postImage {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  
+  .interactions {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+  }
+  
+  .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+  
+  .actions button:hover {
+    color: #000;
+  }
+  /* Comments section container */
+.commentsSection {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
+    border-radius: 6px;
+  }
+  
+  /* Add comment input container */
+  .addComment {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Comment input field */
+  .addComment input[type="text"] {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1rem;
+    outline-offset: 2px;
+    transition: border-color 0.2s ease;
+  }
+  
+  .addComment input[type="text"]:focus {
+    border-color: #3b82f6; /* blue focus */
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  
+  /* Post button for comment */
+  .addComment button {
+    background-color: #3b82f6; /* blue */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 0 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+  }
+  
+  .addComment button:hover {
+    background-color: #2563eb; /* darker blue */
+  }
+  
+  /* Comments list */
+  .commentsList {
+    max-height: 300px; /* limit height */
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+  
+  /* Single comment */
+  .comment {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    font-size: 0.9rem;
+    line-height: 1.3;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Comment username */
+  .comment strong {
+    color: #2563eb; /* blue for username */
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+  
+  /* Scrollbar styling for commentsList (optional) */
+  .commentsList::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .commentsList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .commentsList::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+  }
+  
+  .commentsList::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+  .commentProfilePic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  

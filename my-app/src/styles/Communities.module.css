@@ -1,0 +1,246 @@
+.communitiesPage {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    margin-bottom: 32px;
+  }
+  
+  .header h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .header p {
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .communitiesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+  }
+  
+  .communityCard {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+  }
+  
+  .communityCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .memberBadge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .blue { background: #e8f0fe; color: #1a73e8; }
+  .green { background: #e6f4ea; color: #137333; }
+  .purple { background: #f3e8fd; color: #9334e6; }
+  .red { background: #fce8e6; color: #ea4335; }
+  .yellow { background: #fef7e0; color: #f9ab00; }
+  .pink { background: #fde7f3; color: #e31b63; }
+  
+  .rating {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .communityCard h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  
+  .description {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    min-height: 42px;
+  }
+  
+  .admin {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 12px;
+  }
+  
+  .adminAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .adminInfo h3 {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .adminInfo p {
+    font-size: 12px;
+    color: #666;
+    margin: 4px 0 0;
+  }
+  
+  .joinButton {
+    width: 100%;
+    padding: 12px;
+    background: #6200ee;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .joinButton:hover {
+    background: #5000c9;
+    transform: translateY(-1px);
+  }
+  
+  @media (max-width: 768px) {
+    .communitiesGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .communitiesPage {
+      padding: 16px;
+    }
+  }
+
+.communities {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.communitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.communityCard {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.memberCount {
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 15px;
+}
+
+.rating {
+  color: #666;
+}
+
+.communityCard h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.admin {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.adminImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.adminInfo {
+  font-size: 14px;
+}
+
+.adminName {
+  margin: 0;
+  color: #333;
+  font-weight: 500;
+}
+
+.adminRole {
+  margin: 0;
+  color: #666;
+}
+
+.joinButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid purple;
+  color: purple;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.joinButton:hover {
+  background-color: purple;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .communitiesGrid {
+    grid-template-columns: 1fr;
+  }
+}

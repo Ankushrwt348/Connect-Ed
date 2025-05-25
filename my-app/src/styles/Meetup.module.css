@@ -1,0 +1,149 @@
+.meetupsPage {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    margin-bottom: 32px;
+  }
+  
+  .header h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .header p {
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .meetupsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+  }
+  
+  .meetupCard {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+  }
+  
+  .meetupCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .category {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .technology { 
+    background: #e8f0fe; 
+    color: #1a73e8; 
+  }
+  
+  .design { 
+    background: #e6f4ea; 
+    color: #137333; 
+  }
+  
+  .ai\/ml { 
+    background: #f3e8fd; 
+    color: #9334e6; 
+  }
+  
+  .date {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .meetupCard h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  
+  .description {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    min-height: 42px;
+  }
+  
+  .organizer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .organizerAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .organizerInfo h3 {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .organizerInfo p {
+    font-size: 12px;
+    color: #666;
+    margin: 4px 0 0;
+  }
+  
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .joinButton {
+    width: 100%;
+    padding: 12px;
+    background: #6200ee;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .joinButton:hover {
+    background: #5000c9;
+    transform: translateY(-1px);
+  }
+  
+  @media (max-width: 768px) {
+    .meetupsGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .meetupsPage {
+      padding: 16px;
+    }
+  }

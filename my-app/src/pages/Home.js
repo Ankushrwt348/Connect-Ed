@@ -10,6 +10,19 @@ function Home({ user }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newPostContent, setNewPostContent] = useState('');
+  const [sidebarMeetups, setSidebarMeetups] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      axios.get('http://localhost:8081/api/meetups', { withCredentials: true })
+        .then(res => {
+          setSidebarMeetups(res.data);
+        })
+        .catch(() => {
+          console.error('Failed to fetch meetups.');
+        });
+    }
+  }, [user]);
 
   // Meetup form state
   const [newMeetup, setNewMeetup] = useState({
@@ -229,50 +242,40 @@ function Home({ user }) {
           </div>
         </div>
       </div>
-      
+
       {/* Right Sidebar */}
       <div className={styles.rightSidebar}>
         {/* Upcoming Meetups Section */}
         <div className={styles.sidebarSection}>
           <h2>Upcoming Meetups</h2>
           <div className={styles.meetupsList}>
-            <div className={styles.meetupItem}>
-              <div className={styles.meetupDate}>
-                <div className={styles.month}>DEC</div>
-                <div className={styles.day}>15</div>
-              </div>
-              <div className={styles.meetupInfo}>
-                <h3>Tech Innovation Summit 2024</h3>
-                <p>Virtual • 10:00 AM PST</p>
-                <span className={`${styles.tag} ${styles.technology}`}>Technology</span>
-              </div>
-            </div>
+            {sidebarMeetups.length === 0 ? (
+              <p>No upcoming meetups.</p>
+            ) : (
+              sidebarMeetups.slice(0, 3).map((meetup) => {
+                const dateObj = new Date(meetup.date);
+                const month = dateObj.toLocaleString('default', { month: 'short' });
+                const day = dateObj.getDate();
 
-            <div className={styles.meetupItem}>
-              <div className={styles.meetupDate}>
-                <div className={styles.month}>DEC</div>
-                <div className={styles.day}>15</div>
-              </div>
-              <div className={styles.meetupInfo}>
-                <h3>UX Design Workshop</h3>
-                <p>Virtual • 10:00 AM PST</p>
-                <span className={`${styles.tag} ${styles.design}`}>Design</span>
-              </div>
-            </div>
-
-            <div className={styles.meetupItem}>
-              <div className={styles.meetupDate}>
-                <div className={styles.month}>DEC</div>
-                <div className={styles.day}>15</div>
-              </div>
-              <div className={styles.meetupInfo}>
-                <h3>AI Innovation Summit</h3>
-                <p>Virtual • 10:00 AM PST</p>
-                <span className={`${styles.tag} ${styles.ai}`}>AI/ML</span>
-              </div>
-            </div>
+                return (
+                  <div className={styles.meetupItem} key={meetup.id}>
+                    <div className={styles.meetupDate}>
+                      <div className={styles.month}>{month.toUpperCase()}</div>
+                      <div className={styles.day}>{day}</div>
+                    </div>
+                    <div className={styles.meetupInfo}>
+                      <h3>{meetup.title}</h3>
+                      <p>{meetup.location} • {dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                      <span className={`${styles.tag} ${styles[meetup.category?.toLowerCase().replace('/', '') || 'technology']}`}>
+                        {meetup.category || 'Technology'}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })
+            )}
           </div>
-          <a href="#" className={styles.seeMoreLink}>See more events</a>
+          <a href="/meetups" className={styles.seeMoreLink}>See more events</a>
         </div>
 
         {/* Communities Section */}

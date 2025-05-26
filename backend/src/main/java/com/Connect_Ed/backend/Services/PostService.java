@@ -25,6 +25,7 @@ public class PostService {
         post.setContent(content);
         post.setImageUrl(imageUrl);
         post.setCreatedAt(LocalDateTime.now());
+        post.setCreatedByEmail(user.getEmail());
         return postRepository.save(post);
     }
 

@@ -97,7 +97,6 @@ const Post = ({ post }) => {
       .finally(() => setLikeLoading(false));
   };
 
-  console.log('Post profilePic:', post.profilePic);
   return (
     <div className={styles.post}>
       <div className={styles.postHeader}>
@@ -164,7 +163,7 @@ const Post = ({ post }) => {
               <p>No comments yet.</p>
             ) : (
               comments.map(comment => {
-                console.log('Rendering comment:', comment);
+              
 
                 return (
                   <div key={comment.id} className={styles.comment}>

@@ -1,61 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from '../styles/Network.module.css';
 
+const connectedMembers = [
+  {
+    id: 1,
+    name: 'Srishti Kapoor',
+    period: '2022-Present',
+    profilePic: 'https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png'
+  },
+  {
+    id: 2,
+    name: 'Shruti Arora',
+    period: '2018-2022',
+    role: 'Senior Consultant at EY',
+    profilePic: 'https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png'
+  },
+  {
+    id: 3,
+    name: 'Akhil Sharma',
+    period: '2013-2017',
+    role: 'Senior Developer at Tech Mahindra',
+    profilePic: 'https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png'
+  },
+  // Add more members as needed
+];
+
+const recommendedConnections = [
+  {
+    id: 1,
+    name: 'Dhruv Shah',
+    role: 'Senior Developer at Tech Solutions',
+    profilePic: 'https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png'
+  },
+  // Add more recommended connections as needed
+];
+
 function Network() {
-  const [connectedMembers, setConnectedMembers] = useState([]);
-  const [recommendedConnections, setRecommendedConnections] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // ✅ Fetch connected and recommended users on mount
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const connectedRes = await fetch('/connected');
-        const recommendedRes = await fetch('/recommended');
-
-        const connectedData = await connectedRes.json();
-        const recommendedData = await recommendedRes.json();
-
-        setConnectedMembers(connectedData);
-        setRecommendedConnections(recommendedData);
-      } catch (error) {
-        console.error('Error fetching network data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // ✅ Handle Connect button click
-  const handleConnect = async (connectUserId) => {
-    try {
-      const res = await fetch(`/connect/${connectUserId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (res.ok) {
-        alert('Connected successfully!');
-        // Refresh recommended + connected lists
-        const refreshedConnected = await fetch('/connected').then(r => r.json());
-        const refreshedRecommended = await fetch('/recommended').then(r => r.json());
-        setConnectedMembers(refreshedConnected);
-        setRecommendedConnections(refreshedRecommended);
-      } else {
-        const errorText = await res.text();
-        alert(`Error: ${errorText}`);
-      }
-    } catch (error) {
-      console.error('Connection failed:', error);
-    }
-  };
-
-  if (loading) return <p>Loading...</p>;
-
   return (
     <div className={styles.network}>
       <h1>Network</h1>
@@ -63,36 +43,45 @@ function Network() {
         Connect with professionals and expand your professional network
       </p>
 
-      <section className={styles.connectedSection}>
-        <h2>Connected Members ({connectedMembers.length})</h2>
+      <div className={styles.section}>
+        <h2>Connected Members (29)</h2>
         <div className={styles.membersGrid}>
           {connectedMembers.map(member => (
             <div key={member.id} className={styles.memberCard}>
-              <img src={member.profilePic || '/default-avatar.png'} alt={member.name} className={styles.profileImage} />
+              <img 
+                src={member.profilePic} 
+                alt={member.name} 
+                className={styles.avatar} 
+              />
               <div className={styles.memberInfo}>
                 <h3>{member.name}</h3>
-                <p>{member.role || 'Student'}</p>
+                <p className={styles.period}>{member.period}</p>
+                {member.role && <p className={styles.role}>{member.role}</p>}
               </div>
             </div>
           ))}
         </div>
-        <button className={styles.viewMore}>View more</button>
-      </section>
+        <button className={styles.viewMore}>View more (16)</button>
+      </div>
 
-      <section className={styles.recommendedSection}>
+      <div className={styles.section}>
         <h2>Recommended Connections</h2>
         <div className={styles.recommendedGrid}>
           {recommendedConnections.map(connection => (
             <div key={connection.id} className={styles.recommendedCard}>
-              <img src={connection.profilePic || '/default-avatar.png'} alt={connection.name} className={styles.profileImage} />
+              <img 
+                src={connection.profilePic} 
+                alt={connection.name} 
+                className={styles.avatar} 
+              />
               <h3>{connection.name}</h3>
-              <p>{connection.role || 'Alumni'}</p>
-              <button className={styles.connectButton} onClick={() => handleConnect(connection.id)}>Connect</button>
+              <p className={styles.role}>{connection.role}</p>
+              <button className={styles.connectButton}>Connect</button>
             </div>
           ))}
         </div>
-        <button className={styles.viewMore}>View more</button>
-      </section>
+        <button className={styles.viewMore}>View more (15)</button>
+      </div>
     </div>
   );
 }

@@ -12,7 +12,7 @@ function Communities() {
       admin: {
         name: "John Doe",
         role: "Senior Developer",
-        image: "/path-to-image/john.jpg"
+        image: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
       }
     },
     {
@@ -24,7 +24,7 @@ function Communities() {
       admin: {
         name: "Sarah Smith",
         role: "UX Designer",
-        image: "/path-to-image/sarah.jpg"
+        image: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
       }
     },
     {
@@ -36,7 +36,7 @@ function Communities() {
       admin: {
         name: "Mike Johnson",
         role: "AI Researcher",
-        image: "/path-to-image/mike.jpg"
+        image: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
       }
     },
     {
@@ -48,7 +48,7 @@ function Communities() {
       admin: {
         name: "Emily Chen",
         role: "Mobile Developer",
-        image: "/path-to-image/emily.jpg"
+        image: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
       }
     },
     {
@@ -60,7 +60,7 @@ function Communities() {
       admin: {
         name: "Alex Turner",
         role: "Cloud Architect",
-        image: "/path-to-image/alex.jpg"
+        image: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
       }
     },
     {
@@ -72,7 +72,7 @@ function Communities() {
       admin: {
         name: "David Kim",
         role: "DevOps Engineer",
-        image: "/path-to-image/david.jpg"
+        image: "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
       }
     }
   ];

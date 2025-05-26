@@ -1,22 +1,29 @@
-// src/components/OAuth2Success.js
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const OAuth2Success = () => {
+const OAuth2Success = ({ setUser }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkApprovalStatus = async () => {
       try {
-        const res = await axios.get("/api/user/me"); 
+        const res = await axios.get("/api/user/me", { withCredentials: true }); 
         const user = res.data;
+
+        // Optional: store user in app state
+        if (setUser) {
+          setUser(user);
+        }
 
         if (user.status === "PENDING_APPROVAL") {
           navigate("/profile");
-        } else {
+        } else if (user.status === "APPROVED") {
           navigate("/");
+        } else {
+          navigate("/signin");
         }
+
       } catch (error) {
         console.error("OAuth2 success error:", error);
         navigate("/signin");
@@ -24,7 +31,7 @@ const OAuth2Success = () => {
     };
 
     checkApprovalStatus();
-  }, [navigate]);
+  }, [navigate, setUser]);
 
   return <div>Loading...</div>;
 };

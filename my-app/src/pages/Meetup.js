@@ -60,7 +60,7 @@ function Meetups({ user }) {
 
             <div className={styles.organizer}>
               <img
-                src={meetup.createdByProfilePic || '/default-avatar.png'}
+                src={meetup.createdByProfilePic || 'https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png'}
                 alt={meetup.createdByName}
                 className={styles.organizerAvatar}
               />

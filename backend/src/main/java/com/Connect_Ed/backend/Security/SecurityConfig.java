@@ -32,7 +32,7 @@ public class SecurityConfig {
                                 "/", "/login/**", "/api/auth/**", "/favicon.ico", "/static/**"
                         ).permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/posts/**").authenticated()
+                        .requestMatchers("/api/posts/**,/api/user-info/").authenticated()
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth -> oauth

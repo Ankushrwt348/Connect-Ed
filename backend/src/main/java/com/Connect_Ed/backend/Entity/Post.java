@@ -23,6 +23,8 @@ public class Post {
 
     private LocalDateTime createdAt;
 
+    private String createdByEmail;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")

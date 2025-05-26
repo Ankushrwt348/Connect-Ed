@@ -1,86 +1,417 @@
-.profileContainer {
-  max-width: 900px;
-  margin: auto;
-  font-family: 'Segoe UI', sans-serif;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #f3f2ef;
 }
 
-.coverPhoto img {
-  width: 100%;
+.profileSection {
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.coverImage {
   height: 200px;
+  width: 100%;
+  position: relative;
+  background: #a0b4b7;
+}
+
+.coverImage img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px 8px 0 0;
 }
 
 .profileCard {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  background: white;
-  border: 1px solid #ddd;
-  border-top: none;
+  padding: 0 24px 24px;
   position: relative;
 }
 
-.profilePic {
-  width: 100px;
-  height: 100px;
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.profilePicture {
+  flex-shrink: 0; /* keep size fixed */
+}
+
+.profilePicture img {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  margin-right: 20px;
-  border: 3px solid #fff;
   object-fit: cover;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  border: 3px solid white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
 }
 
-.profileInfo {
-  flex: 1;
-}
-
-.headline {
-  font-size: 1.1rem;
-  color: #555;
-  margin: 5px 0;
-}
-
-.location {
-  color: #888;
-  font-size: 0.95rem;
+.profilePicture img:hover {
+  transform: scale(1.05);
 }
 
 .editButton {
-  background-color: #0073b1;
-  color: white;
+  background: transparent;
   border: none;
-  padding: 10px 16px;
-  border-radius: 5px;
+  color: #555;
+  font-size: 20px;
   cursor: pointer;
+  padding: 4px 6px;
+  transition: color 0.2s ease;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
-.sections {
-  background: #fff;
-  padding: 20px;
-  border: 1px solid #ddd;
-  margin-top: 10px;
+.editButton:hover {
+  color: #000;
+}
+
+.editIcon {
+  pointer-events: none;
+}
+
+
+
+
+.profileInfo {
+  margin-bottom: 24px;
+}
+
+.profileInfo h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.headline {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0 0 8px;
+}
+
+.location {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0 0 8px;
+}
+
+.stats {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 16px;
+}
+
+.education {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.eduLogo {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.profileDetails {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 16px;
+}
+
+.detailSection {
+  margin-bottom: 24px;
+}
+
+.detailSection h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.detailSection p {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.contentSection {
+  margin-top: 24px;
 }
 
 .section {
-  margin-bottom: 20px;
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
-.entry {
-  margin-top: 8px;
+.section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px;
 }
 
-.skillsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.skillsList li {
-  background: #e0f3ff;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
+.card {
+  padding: 16px;
+  border-radius: 8px;
+  background: white;
+  margin-bottom: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  background: #f3f2ef;
+}
+
+.card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.card p {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.card small {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modalHeader {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+}
+
+.closeButton:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.form {
+  padding: 24px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancelButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+}
+
+.cancelButton:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.submitButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #0a66c2;
+  color: white;
+}
+
+.submitButton:hover {
+  background: #004182;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .profilePicture {
+    width: 120px;
+    height: 120px;
+    margin-top: -60px;
+  }
+  
+  .coverImage {
+    height: 160px;
+  }
+  
+  .modal {
+    margin: 16px;
+    max-height: calc(100vh - 32px);
+  }
+}.contentSection {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  background: white;
+  border-radius: 8px;
+  padding: 24px 24px 16px;
+  box-shadow: none;
+  border: 1px solid #e1e9ee;
+  transition: border-color 0.3s ease;
+}
+
+.section:hover {
+  border-color: #0a66c2;
+  box-shadow: 0 4px 12px rgb(10 102 194 / 0.1);
+}
+
+.section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #0a66c2;
+  border-bottom: 2px solid #0a66c2;
+  padding-bottom: 8px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  border-top: 1px solid #e1e9ee;
+  padding: 16px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card:first-child {
+  border-top: none;
+}
+
+.card:hover {
+  background-color: #f3f6f8;
+}
+
+.card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+  margin: 0 0 8px 0;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.card small {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contentSection {
+    margin-top: 24px;
+  }
+
+  .section {
+    padding: 16px 16px 12px;
+  }
 }

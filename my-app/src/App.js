@@ -82,8 +82,8 @@ function App() {
                 <div className={styles.userProfile}>
                   <NavLink to="/profile">
                     <img
-                      src={user.profilImage || user.imageUrl || "/default-avatar.png"}
-                      alt="Profile"
+                      src={user?.profilePic || '/default-avatar.jpg'}
+                      alt="User avatar"
                       className={styles.profilePic}
                     />
                   </NavLink>

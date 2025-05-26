@@ -16,8 +16,8 @@ public class MeetupService {
         return meetupRepository.findAll();
     }
 
-    public Meetup createMeetup(Meetup meetup) {
-        return meetupRepository.save(meetup);
+    public List<Meetup> findMeetupsByCreatorEmail(String email) {
+        return meetupRepository.findByCreatedByEmail(email);
     }
 }
 

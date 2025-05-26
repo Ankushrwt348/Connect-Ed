@@ -62,4 +62,16 @@ public class MeetupController {
         Meetup savedMeetup = meetupRepository.save(meetup);
         return ResponseEntity.ok(savedMeetup);
     }
+    @GetMapping("/mine")
+    public ResponseEntity<?> getMyMeetups(@AuthenticationPrincipal OAuth2User principal) {
+        if (principal == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+        }
+
+        String userEmail = principal.getAttribute("email");
+
+        List<Meetup> myMeetups = meetupService.findMeetupsByCreatorEmail(userEmail);
+
+        return ResponseEntity.ok(myMeetups);
+    }
 }
